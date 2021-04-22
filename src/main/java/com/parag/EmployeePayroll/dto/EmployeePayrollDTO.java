@@ -3,12 +3,15 @@ package com.parag.EmployeePayroll.dto;
 public class EmployeePayrollDTO {
 	public String name;
 	public long salary;
+	
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public long getSalary() {
 		return salary;
 	}
@@ -16,9 +19,14 @@ public class EmployeePayrollDTO {
 		this.salary = salary;
 	}
 	public EmployeePayrollDTO(String name, long salary) {
-		super();
+		
 		this.name = name;
 		this.salary = salary;
+	}
+	
+	public EmployeePayrollDTO() {
+		
+		
 	}
 	@Override
 	public String toString() {

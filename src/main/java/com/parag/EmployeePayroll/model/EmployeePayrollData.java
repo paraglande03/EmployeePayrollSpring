@@ -1,18 +1,22 @@
 package com.parag.EmployeePayroll.model;
 
+import com.parag.EmployeePayroll.dto.EmployeePayrollDTO;
+
 public class EmployeePayrollData {
 
 	private int employeeId;
 	private String name;
 	private long salary;
-	
-	public EmployeePayrollData() {}	
 
-	public EmployeePayrollData(int employeeId, String name, long salary) {
-		super();
-		this.employeeId = employeeId;
-		this.name = name;
-		this.salary = salary;
+	
+	  public EmployeePayrollData(int empId, EmployeePayrollDTO empPayrollDTO) {
+	  
+	  this.employeeId = empId; this.name = empPayrollDTO.name; this.salary =
+	  empPayrollDTO.salary; }
+	 
+
+	public EmployeePayrollData() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getEmployeeId() {
@@ -38,8 +42,5 @@ public class EmployeePayrollData {
 	public void setSalary(long salary) {
 		this.salary = salary;
 	}
-	
-	
-	
-	
+
 }
