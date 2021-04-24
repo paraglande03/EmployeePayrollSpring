@@ -2,6 +2,8 @@ package com.parag.EmployeePayroll.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,7 +48,7 @@ public class EmployeePayrollController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> addEmployyePayrollData(@RequestBody EmployeePayrollDTO empPayrollDTO){
+	public ResponseEntity<ResponseDTO> addEmployyePayrollData(@Valid @RequestBody EmployeePayrollDTO empPayrollDTO){
 		EmployeePayrollData employeePayrollData=null;
 		employeePayrollData=service.createEmployeePayrollData(empPayrollDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Creattion Successful", employeePayrollData);
@@ -54,7 +56,7 @@ public class EmployeePayrollController {
 	}
 	
 	@PutMapping("/update/{empId}")
-	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable ("empId")int empId,@RequestBody EmployeePayrollDTO empPayrollDTO){
+	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable ("empId")int empId,@Valid@RequestBody EmployeePayrollDTO empPayrollDTO){
 		EmployeePayrollData employeePayrollData=null;
 		employeePayrollData= service.updateEmployeePayrollData(empId,empPayrollDTO);
 		ResponseDTO responseDTO= new ResponseDTO("Updated!", employeePayrollData);

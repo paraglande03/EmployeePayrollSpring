@@ -1,8 +1,13 @@
 package com.parag.EmployeePayroll.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class EmployeePayrollDTO {
-	public String name;
+	
 	public long salary;
+	
+	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$" , message = "Please add valid name")
+	public String name;
 	
 	
 	public String getName() {
