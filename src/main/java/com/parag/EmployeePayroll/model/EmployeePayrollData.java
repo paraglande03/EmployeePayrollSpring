@@ -16,7 +16,7 @@ public class EmployeePayrollData {
 	 
 
 	public EmployeePayrollData() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public int getEmployeeId() {
