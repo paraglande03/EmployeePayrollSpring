@@ -1,14 +1,17 @@
 package com.parag.EmployeePayroll.dto;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 public class EmployeePayrollDTO {
 	
-	public long salary;
+	
 	
 	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$" , message = "Please add valid name")
 	public String name;
 	
+	@Min (value = 500 , message = "Min Wage should be 500")
+	public long salary;
 	
 	public String getName() {
 		return name;
