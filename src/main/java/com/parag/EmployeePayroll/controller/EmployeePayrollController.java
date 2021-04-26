@@ -22,10 +22,14 @@ import com.parag.EmployeePayroll.dto.ResponseDTO;
 import com.parag.EmployeePayroll.model.EmployeePayrollData;
 import com.parag.EmployeePayroll.service.IEmployeePayrollService;
 
+import lombok.extern.slf4j.Slf4j;
 
 
-@RequestMapping("/employeepayrollservice")
+
+
 @RestController
+@Slf4j
+@RequestMapping("/employeepayrollservice")
 public class EmployeePayrollController {
 	
 	@Autowired
@@ -47,8 +51,17 @@ public class EmployeePayrollController {
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
+	@GetMapping("/department/{department}")
+	public ResponseEntity<ResponseDTO> getEmployeeById(@PathVariable("department") String department){
+		List<EmployeePayrollData> employeePayrollData=null;
+		employeePayrollData = service.findEmployeesByDept(department);
+		ResponseDTO responseDTO = new ResponseDTO("Get call successful for dept", employeePayrollData);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+	}
+	
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addEmployyePayrollData(@Valid @RequestBody EmployeePayrollDTO empPayrollDTO){
+		log.debug("Employee DTO"+ empPayrollDTO.toString());
 		EmployeePayrollData employeePayrollData=null;
 		employeePayrollData=service.createEmployeePayrollData(empPayrollDTO);
 		ResponseDTO responseDTO = new ResponseDTO("Creattion Successful", employeePayrollData);
